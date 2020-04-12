@@ -38,6 +38,7 @@ jobs:
           cpack
           echo "::set-output name=deb_path::$(realpath ursadb*.deb | head -n 1)"
           echo "::set-output name=deb_name::$(realpath ursadb*.deb | head -n 1 | rev | cut -f1 -d/ | rev)"
+          docker run -it debian:buster echo test
       - name: Upload Debian package
         id: upload-release-asset
         uses: actions/upload-release-asset@v1
