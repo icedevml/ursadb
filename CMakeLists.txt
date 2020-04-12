@@ -50,3 +50,11 @@ target_include_directories(ursadb_bench PUBLIC ${CMAKE_SOURCE_DIR})
 target_link_libraries(ursadb_bench ursa)
 target_enable_ipo(ursadb_bench)
 target_clangformat_setup(ursadb_bench)
+
+install(TARGETS ursadb ursadb_new ursadb_trim ursadb_test ursadb_bench
+	DESTINATION bin)
+
+SET(CPACK_GENERATOR "DEB")
+SET(CPACK_DEBIAN_PACKAGE_MAINTAINER "info@cert.pl")
+set(CPACK_DEBIAN_PACKAGE_DEPENDS "libzmq5")
+INCLUDE(CPack)
